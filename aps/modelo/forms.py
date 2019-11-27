@@ -5,9 +5,12 @@ class formularioUser(forms.ModelForm):
 
 	password = forms.CharField(widget=forms.PasswordInput)
 	class Meta:  
-		model = User
-		fields = ["nombre", "username", "descripcion", "fecha_nacimiento", "foto_perfil",
-				"celular", "correo", password]
+		model = User		
+		fields = ["nombre", "username", "descripcion", "fecha_nacimiento",
+				"celular", "correo"]
+		widgets = {
+            'password': forms.PasswordInput(),
+        }
 
 class formularioPost(forms.ModelForm):
 

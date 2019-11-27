@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pagina princilap</title>
+</head>
+<body>
+
+	<h1> Lista de Clientes </h1>
+  
+  <table class="table table-warning table-bordered" id="tablina">
+    <thead class="thead-dark">
+      <tr>
+      
+        <th> Nombre </th>
+        <th> Username </th>
+        <th> Celular </th>
+        <th> Fecha nacimiento </th>
+        <th> Foto </th>
+
+      </tr>
+    </thead>
+    
+    {% for c in lista %}
+    <tbody>
+      <tr>        
+        <td> {{c.nombre}} </td>
+        <td> {{c.username}} </td>
+        <td> {{c.celular}} </td>
+        <td> {{c.fecha_nacimiento}} </td>
+        <td> <img src="{{c.foto_perfil}}"> </td>
+
+      </tr> 
+    </tbody>
+    {% endfor %}
+    
+  </table>
+</body>
+</html>

@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from aps.modelo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('crear_user/', views.create_user, name = 'user'),
+    path('', views.principal, name = 'home')
 ]
