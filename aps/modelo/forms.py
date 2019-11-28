@@ -3,14 +3,23 @@ from aps.modelo.models import User, Post, Comentario
 
 class formularioUser(forms.ModelForm):
 
-	password = forms.CharField(widget=forms.PasswordInput)
 	class Meta:  
 		model = User		
-		fields = ["nombre", "username", "descripcion", "fecha_nacimiento",
-				"celular", "correo"]
-		widgets = {
-            'password': forms.PasswordInput(),
+		fields = [
+			"nombre",
+			"correo",
+			"password", 
+			"fecha_nacimiento",
+			"username", 				
+		]
+		widgets= {
+        "nombre": forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Tu nombre', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Tu nombre"'}),
+        "username": forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Tu nombre de usuario', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Tu nombre de usuario"'}),
+        "fecha_nacimiento": forms.DateInput(format='%Y/%m/%d', attrs = {'class': 'form-control', 'placeholder': 'Fecha de nacimiento AA-MM-DD', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Fecha de nacimiento AA-MM-DD"'}),        
+        "correo": forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'correo electronico', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "correo electronico"'}),
+        "password": forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'clave', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "clave"'})
         }
+
 
 class formularioPost(forms.ModelForm):
 

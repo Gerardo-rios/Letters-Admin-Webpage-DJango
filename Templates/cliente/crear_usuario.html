@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title> Crear Usuario </title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+
+{% block tittle %} Registro {% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
 	<form method="POST"> {% csrf_token %}
 
 		<div class="form-group" style="width: 35%">	
 			{{formulario.as_p}}						
 		</div>
 		
-		<button type="submit" class="btn btn-alert"> Guardar <img src="http://www.iconarchive.com/download/i34209/treetog/i/Floppy-Small.ico" width="15px" height="15px" /> </button> 
+		<button type="submit" class="btn btn-danger"> Guardar <img src="http://www.iconarchive.com/download/i34209/treetog/i/Floppy-Small.ico" width="15px" height="15px" /> </button> 
 
 	</form>	
-</body>
-</html>
+{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -7,15 +7,8 @@ from .forms import formularioUser
 
 # Create your views here.
 def principal(request):
-	listado = User.objects.all().order_by('username')
 
-	context = {
-
-		'lista': listado,
-
-	}
-
-	return render (request, 'index.html', context)
+	return render (request, 'otro.html')
 
 def create_user(request):	
 
@@ -29,20 +22,24 @@ def create_user(request):
 			usuario = User()
 			usuario.nombre = datos.get('nombre')
 			usuario.username = datos.get('username')
-			usuario.descripcion = datos.get('descripcion')
+			#usuario.descripcion = "descripcion"
 			usuario.fecha_nacimiento = datos.get('fecha_nacimiento')
-			usuario.foto_perfil = "http://assets.stickpng.com/thumbs/585e4beacb11b227491c3399.png"
-			usuario.celular = datos.get('celular')
+			#usuario.foto_perfil = "static/photos/bob-esmonja_400x400.jpg"
+			#usuario.celular = "000000000"
 			usuario.correo = datos.get('correo')
 			usuario.password = datos.get('password')
+
 			usuario.save()
 
 			return redirect(principal)
-
+		else:
+			print("no es valido")
+	else: 
+		print("no es post")
 	context = {
 		'formulario': formulario,
 	}
 	
-	return render (request, 'cliente/crear_usuario.html', context)
+	return render (request, 'index.html', context)
 
 
