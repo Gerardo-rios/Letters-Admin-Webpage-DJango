@@ -19,7 +19,6 @@ class Post(models.Model):
 	post_id = models.AutoField(primary_key = True)
 	contenido = models.FileField(upload_to='files', null = False)
 	descripcion = models.TextField(max_length = 200) 
-	likes = models.PositiveIntegerField(default = 0)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 	etiquetas = models.CharField(max_length = 200)
@@ -51,7 +50,7 @@ class Seguidores(models.Model):
 	Seg_id = models.AutoField(primary_key = True)
 	seguidor = models.ForeignKey('User', null = False, related_name = 'seguidor', on_delete = models.CASCADE)
 	seguido = models.ForeignKey('User', null = False, related_name = 'seguido', on_delete = models.CASCADE)
-	aceptado = models.BooleanField(default = True)
+	aceptado = models.BooleanField(default = False)
 
 class Notificaciones(models.Model):
 
@@ -73,3 +72,9 @@ class Mensajes(models.Model):
 	mensaje = models.CharField(max_length = 100, null = False)
 	receptor = models.ForeignKey('User', null = False, related_name = 'receptor', on_delete = models.CASCADE)
 	sender = models.ForeignKey('User', null = False, related_name = 'sender', on_delete = models.CASCADE)
+
+class Likes(models.Model):
+
+	like_id = models.AutoField(primary_key = True)
+	user_id = models.ForeignKey('User', null = False, on_delete = models.CASCADE)
+	post_id = models.ForeignKey('Post', null = False, on_delete = models.CASCADE)

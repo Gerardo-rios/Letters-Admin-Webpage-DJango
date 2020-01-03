@@ -4,13 +4,15 @@ from aps.modelo.models import User
 
 from .forms import formularioUser
 
+from django.contrib import messages
+
 
 # Create your views here.
 def principal(request):
 
 	return render (request, 'otro.html')
 
-def create_user(request):	
+def registrarse(request):	
 
 	formulario = formularioUser(request.POST)	
 
@@ -24,7 +26,7 @@ def create_user(request):
 			usuario.username = datos.get('username')
 			#usuario.descripcion = "descripcion"
 			usuario.fecha_nacimiento = datos.get('fecha_nacimiento')
-			#usuario.foto_perfil = "static/photos/bob-esmonja_400x400.jpg"
+			usuario.foto_perfil = "static/photos/default.png"
 			#usuario.celular = "000000000"
 			usuario.correo = datos.get('correo')
 			usuario.password = datos.get('password')
@@ -36,6 +38,7 @@ def create_user(request):
 			print("no es valido")
 	else: 
 		print("no es post")
+		
 	context = {
 		'formulario': formulario,
 	}
