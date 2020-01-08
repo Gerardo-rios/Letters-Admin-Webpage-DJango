@@ -19,6 +19,7 @@ from aps.modelo import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('prin/', views.principal, name = 'prin'),
+    #path('log/', views.principal, name = 'prin'),
+    path('logear/', views.logear, name = 'logear'),
     path('', views.registrarse, name = 'home_reg')
 ]

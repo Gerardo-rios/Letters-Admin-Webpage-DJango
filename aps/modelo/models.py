@@ -10,9 +10,10 @@ class User(models.Model):
 	fecha_nacimiento = models.DateField(auto_now = False, auto_now_add = False, null = False)
 	foto_perfil = models.ImageField(upload_to='photos', default = None)
 	celular = models.CharField(max_length = 10)
-	
+	status = models.BooleanField(default = True)
 	correo = models.EmailField(max_length = 70, null = False, unique = True)
 	password = models.CharField(max_length = 100, null = False)
+
 
 class Post(models.Model):
 

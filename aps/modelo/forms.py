@@ -33,3 +33,6 @@ class formularioComentario(forms.ModelForm):
 		model = Comentario
 		fields = ["contenido"]
 
+class formularioLogin(forms.Form):
+	username = forms.CharField(widget = forms.TextInput(attrs = {'id': 'username', 'class':'login username-field', 'placeholder':'Username', 'required': True}))
+	password = forms.CharField(widget = forms.PasswordInput(attrs = {'id':'password', 'class':'login password-field', 'placeholder':'Password', 'required': True}))
