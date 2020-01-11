@@ -6,7 +6,7 @@
   
 <head>
     <meta charset="utf-8">
-    {% block tittle %} Login {% endblock %}
+    {% block title %} Ingreso {% endblock %}
 
     {% block extrahead %}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -71,7 +71,7 @@
 		
 		<form method="POST">{% csrf_token %}
 		
-			<h1>Admin Login</h1>		
+			<h1>Ingreso de Administradores</h1>		
 			
 			<div class="login-fields">
 				
@@ -106,10 +106,11 @@
 {%block footer%}
 {% endblock %}
 {% block extrajs %}
-<script src="js/jquery-1.7.2.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
 
-<script src="js/signin.js"></script>
+<script src="{% static 'js/signin.js' %}"></script>
+
 {% endblock %}
 </body>
 

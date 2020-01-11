@@ -14,6 +14,8 @@ from django.urls import reverse
 
 from django.contrib import messages
 
+#from django.contrib.auth.mixins import LoginRequiredMixin
+
 def logear(request):
 
 	if request.method == 'POST':
@@ -37,45 +39,59 @@ def logear(request):
 		'form' : formulario,		
 
 	}
-
-	return render (request, 'login.html', context)
+	if request.user.is_authenticated:
+		return render (request, 'index.html')
+	return render (request, 'login.html', context) 
+	
 
 # Create your views here.
+
 def principal(request):
+	#if usuario.groups.filter(name = 'Admin').exists():
+	if request.user.is_authenticated:
+		return render (request, 'index.html')
+	return redirect('/') 
 
-	return render (request, 'otro.html')
-
-def registrarse(request):	
-
-	formulario = formularioUser(request.POST)	
-
-	if request.method == 'POST':
-		
-		if formulario.is_valid():
-
-			datos = formulario.cleaned_data
-			usuario = User()
-			usuario.nombre = datos.get('nombre')
-			usuario.username = datos.get('username')
-			#usuario.descripcion = "descripcion"
-			usuario.fecha_nacimiento = datos.get('fecha_nacimiento')
-			usuario.foto_perfil = "https://via.placeholder.com/150x150"
-			#usuario.celular = "000000000"
-			usuario.correo = datos.get('correo')
-			usuario.password = datos.get('password')
-
-			usuario.save()
-
-			return redirect(principal)
-		else:
-			print("no es valido")
-	else: 
-		print("no es post")
-		
-	context = {
-		'formulario': formulario,
-	}
 	
-	return render (request, 'index.html', context)
+
+@login_required
+def deslogear(request):
+
+	logout(request)
+
+	return redirect('logear')
+
+#def registrarse(request):	
+
+#	formulario = formularioUser(request.POST)	
+
+#	if request.method == 'POST':
+		
+#		if formulario.is_valid():
+
+#			datos = formulario.cleaned_data
+#			usuario = User()
+#			usuario.nombre = datos.get('nombre')
+#			usuario.username = datos.get('username')
+			#usuario.descripcion = "descripcion"
+#			usuario.fecha_nacimiento = datos.get('fecha_nacimiento')
+#    		usuario.foto_perfil = "https://via.placeholder.com/150x150"
+			#usuario.celular = "000000000"
+#			usuario.correo = datos.get('correo')
+#			usuario.password = datos.get('password')
+
+#			usuario.save()
+
+#			return redirect(principal)
+#		else:
+#			print("no es valido")
+#	else: 
+#		print("no es post")
+		
+#	context = {
+#		'formulario': formulario,
+#	}
+	
+#	return render (request, 'index.html', context)
 
 

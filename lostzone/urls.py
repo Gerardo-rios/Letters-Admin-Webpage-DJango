@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from aps.modelo import views
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('log/', views.principal, name = 'prin'),
-    path('logear/', views.logear, name = 'logear'),
-    path('', views.registrarse, name = 'home_reg')
+    path('', views.logear, name = 'logear'),
+    path('home/', views.principal, name = 'home_reg'),
+    path('unlog/', views.deslogear, name = 'unlog')
 ]
