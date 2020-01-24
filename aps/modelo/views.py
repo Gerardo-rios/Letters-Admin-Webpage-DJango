@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from aps.modelo.models import User
+from aps.modelo.models import User, Post
 
 from .forms import formularioUser, formularioLogin
 
@@ -49,9 +49,37 @@ def logear(request):
 def principal(request):
 	#if usuario.groups.filter(name = 'Admin').exists():
 	if request.user.is_authenticated:
-		return render (request, 'index.html')
-	return redirect('/') 
+		
+		activos = User.objects.filter(status = 1)
+		baneados = User.objects.filter(status = 0)
 
+		context = {
+
+		'lista': activos,
+		'baneados': baneados
+
+		}
+
+		return render (request, 'index.html', context)
+
+
+	return redirect(logear) 
+
+def publicaciones(request):
+
+	if request.user.is_authenticated:
+		
+		posts = Post.objects.all().order_by('created')
+
+		context = {
+
+		'lista': posts,
+
+		}
+
+		return render (request, 'posts.html', context)
+
+	return redirect(logear)
 	
 
 @login_required
@@ -59,7 +87,68 @@ def deslogear(request):
 
 	logout(request)
 
-	return redirect('logear')
+	return redirect(logear)
+
+def deletearPost(request):
+
+	usuario = request.user
+
+	if usuario.groups.filter(name = 'Admin').exists():
+
+		external = request.GET['external']
+
+		post = Post.objects.get(post_id = external)
+
+		post.delete()
+
+		return redirect(publicaciones)
+
+	else: 
+		messages.add_message(request, messages.ERROR, "No tienes autorizacion para hacer eso")
+		return redirect(publicaciones)	
+
+
+def banearUser(request):
+
+	usuario = request.user
+
+
+	if usuario.groups.filter(name = 'Admin').exists():
+
+		external = request.GET['external']
+
+		cliente = User.objects.get(user_id = external)
+	
+		cliente.status = False
+
+		cliente.save()
+
+		return redirect(principal)
+
+	else: 
+		messages.add_message(request, messages.ERROR, "No tienes autorizacion para hacer eso")
+		return redirect(principal)	
+
+def unbanUser(request):
+
+	usuario = request.user
+
+	if usuario.groups.filter(name = 'Admin').exists():
+
+		external = request.GET['external']
+
+		cliente = User.objects.get(user_id = external)
+	
+		cliente.status = True
+
+		cliente.save()
+
+		return redirect(principal)
+
+	else: 
+		messages.add_message(request, messages.ERROR, "No tienes autorizacion para hacer eso")
+		return redirect(principal)	
+
 
 #def registrarse(request):	
 
@@ -92,6 +181,6 @@ def deslogear(request):
 #		'formulario': formulario,
 #	}
 	
-#	return render (request, 'index.html', context)
+#	return render (request, 'REGISTROZONE.html', context)
 
 

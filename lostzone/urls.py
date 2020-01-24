@@ -23,5 +23,9 @@ urlpatterns = [
     #path('log/', views.principal, name = 'prin'),
     path('', views.logear, name = 'logear'),
     path('home/', views.principal, name = 'home_reg'),
-    path('unlog/', views.deslogear, name = 'unlog')
+    path('unlog/', views.deslogear, name = 'unlog'),
+    path('ban_cliente/', views.banearUser, name = 'desactivar_cliete'),
+    path('unban_cliente/', views.unbanUser, name = 'activar_cliete'),
+    path('posts/', views.publicaciones, name = 'publicaciones'),
+    path('delete_post/', views.deletearPost, name = 'borrar_publicacion'),
 ]
