@@ -114,7 +114,7 @@
                     <td> {{c.nombre}} </td>
                     <td> {{c.correo}} </td>
                     <td> {{c.username}} </td>              
-                    <td> <a class="avatar"><img style="max-height: 60px; max-width: 60px" src="{{c.foto_perfil}}"></a> </td>
+                    <td> <a class="avatar"><img style="max-height: 60px; max-width: 60px" src="{{host}}/profile_pictures/{{c.foto_perfil}}"></a> </td>
                     <td class="td-actions"><a href="/ban_cliente?external={{c.user_id}}" class="btn btn-small btn-danger"> Banear </a>
                   </tr>
                   {% endfor %}
@@ -146,7 +146,7 @@
                     <td> {{b.nombre}} </td>
                     <td> {{b.correo}} </td>
                     <td> {{b.username}} </td>              
-                    <td> <a class="avatar"><img style="max-height: 40px; max-width: 40px" src="{{b.foto_perfil}}"></a> </td>
+                    <td> <a class="avatar"><img style="max-height: 40px; max-width: 40px" src="{{host}}/profile_pictures/{{b.foto_perfil}}"></a> </td>
                     <td class="td-actions"><a href="/unban_cliente?external={{b.user_id}}" class="btn btn-small btn-success"> Reactivar </a>
                   </tr>
                   {% endfor %}

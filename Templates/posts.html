@@ -124,7 +124,7 @@
                 <tbody>
                   {% for b in lista %}
                   <tr>
-                    <td> <a class="avatar"><img style="max-height: 250px; max-width: 140px" src="{{b.contenido}}"></a> </td>
+                    <td> <a class="avatar"><img style="max-height: 250px; max-width: 140px" src="{{host}}/photos/{{b.contenido}}"></a> </td>
                     <td> {{b.descripcion}} </td>
                     <td> {{b.user.username}} </td>              
                     <td class="td-actions"><a href="/delete_post?external={{b.post_id}}" class="btn btn-small btn-danger"> Eliminar </a>

@@ -16,6 +16,8 @@ from django.contrib import messages
 
 #from django.contrib.auth.mixins import LoginRequiredMixin
 
+host = "http://localhost:8080"
+
 def logear(request):
 
 	if request.method == 'POST':
@@ -56,7 +58,8 @@ def principal(request):
 		context = {
 
 		'lista': activos,
-		'baneados': baneados
+		'baneados': baneados,
+		'host': host
 
 		}
 
@@ -74,7 +77,8 @@ def publicaciones(request):
 		context = {
 
 		'lista': posts,
-
+		'host': host
+		
 		}
 
 		return render (request, 'posts.html', context)
