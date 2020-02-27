@@ -7,7 +7,6 @@ class User(models.Model):
 	nombre = models.CharField(max_length = 100, null = False)
 	username = models.CharField(max_length = 20, unique = True, null = False)
 	descripcion = models.TextField(max_length = 120)
-	fecha_nacimiento = models.DateField(auto_now = False, auto_now_add = False, null = False)
 	foto_perfil = models.ImageField(upload_to='photos', default = None)
 	celular = models.CharField(max_length = 10)
 	status = models.BooleanField(default = True)

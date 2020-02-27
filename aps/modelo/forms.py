@@ -9,13 +9,11 @@ class formularioUser(forms.ModelForm):
 			"nombre",
 			"correo",
 			"password", 
-			"fecha_nacimiento",
 			"username", 				
 		]
 		widgets= {
         "nombre": forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Tu nombre', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Tu nombre"'}),
         "username": forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Tu nombre de usuario', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Tu nombre de usuario"'}),
-        "fecha_nacimiento": forms.DateInput(format='%Y/%m/%d', attrs = {'class': 'form-control', 'placeholder': 'Fecha de nacimiento AA-MM-DD', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Fecha de nacimiento AA-MM-DD"'}),        
         "correo": forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'correo electronico', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "correo electronico"'}),
         "password": forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'clave', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "clave"'})
         }
