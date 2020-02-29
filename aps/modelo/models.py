@@ -19,8 +19,8 @@ class Post(models.Model):
 	post_id = models.AutoField(primary_key = True)
 	contenido = models.FileField(upload_to='files', null = False)
 	descripcion = models.TextField(max_length = 200) 
-	created = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField(auto_now=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
 	etiquetas = models.CharField(max_length = 200)
 	user = models.ForeignKey(
 		'User',
@@ -32,8 +32,8 @@ class Comentario(models.Model):
 
 	coment_id = models.AutoField(primary_key = True)
 	contenido = models.CharField(max_length = 200, null = False)
-	created = models.DateTimeField(auto_now_add=True)
-	updated = models.DateTimeField(auto_now=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
 	user = models.ForeignKey(
 			'User',
 			null = False,

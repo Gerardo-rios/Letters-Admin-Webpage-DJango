@@ -18,7 +18,7 @@ admin.site.register(User, AdminUser)
 
 class AdminPost(admin.ModelAdmin):
 
-	list_display = ["contenido", "descripcion", "etiquetas", "created", "updated"]
+	list_display = ["contenido", "descripcion", "created_at", "updated_at"]
 	list_editable = ["descripcion"]	
 	search_fields = ["etiquetas"]
 
@@ -29,7 +29,7 @@ admin.site.register(Post, AdminPost)
 
 class AdminComentario(admin.ModelAdmin):
 
-	list_display = ["contenido", "created", "updated", "user", "post"]
+	list_display = ["contenido", "created_at", "updated_at", "user", "post"]
 	#list_editable = ["contenido"]		
 
 	class Meta:

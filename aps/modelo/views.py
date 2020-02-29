@@ -72,7 +72,7 @@ def publicaciones(request):
 
 	if request.user.is_authenticated:
 		
-		posts = Post.objects.all().order_by('created')
+		posts = Post.objects.all().order_by('created_at')
 
 		context = {
 
