@@ -17,11 +17,9 @@ class User(models.Model):
 class Post(models.Model):
 
 	post_id = models.AutoField(primary_key = True)
-	contenido = models.FileField(upload_to='files', null = False)
-	descripcion = models.TextField(max_length = 200) 
+	contenido = models.CharField(max_length = 280, null = False) 
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
-	etiquetas = models.CharField(max_length = 200)
 	user = models.ForeignKey(
 		'User',
 		null = False,
@@ -31,7 +29,7 @@ class Post(models.Model):
 class Comentario(models.Model):
 
 	coment_id = models.AutoField(primary_key = True)
-	contenido = models.CharField(max_length = 200, null = False)
+	contenido = models.CharField(max_length = 80, null = False)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 	user = models.ForeignKey(
@@ -50,21 +48,20 @@ class Seguidores(models.Model):
 	Seg_id = models.AutoField(primary_key = True)
 	seguidor = models.ForeignKey('User', null = False, related_name = 'seguidor', on_delete = models.CASCADE)
 	seguido = models.ForeignKey('User', null = False, related_name = 'seguido', on_delete = models.CASCADE)
-	aceptado = models.BooleanField(default = False)
 
-class Notificaciones(models.Model):
+#class Notificaciones(models.Model):
 
-	noti_id = models.AutoField(primary_key = True)
-	contenido = models.CharField(max_length = 50)
-	user = models.ForeignKey(
-			'User',
-			null = False,
-			on_delete = models.CASCADE
-		)
-	post = models.ForeignKey(
-			'Post',			
-			on_delete = models.CASCADE
-		) 
+	#noti_id = models.AutoField(primary_key = True)
+	#contenido = models.CharField(max_length = 50)
+	#user = models.ForeignKey(
+	#		'User',
+	#		null = False,
+	#		on_delete = models.CASCADE
+	#	)
+	#post = models.ForeignKey(
+	#		'Post',			
+	#		on_delete = models.CASCADE
+	#	) 
 
 class Mensajes(models.Model):
 

@@ -23,7 +23,7 @@ class formularioPost(forms.ModelForm):
 
 	class Meta:
 		model = Post
-		fields = ["contenido", "descripcion", "etiquetas"]
+		fields = ["contenido"]
 
 class formularioComentario(forms.ModelForm):
 
