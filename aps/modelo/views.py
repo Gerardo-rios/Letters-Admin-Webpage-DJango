@@ -16,7 +16,7 @@ from django.contrib import messages
 
 #from django.contrib.auth.mixins import LoginRequiredMixin
 
-host = "http://localhost:8080"
+host = "http://192.168.0.108:8080"
 
 def logear(request):
 
