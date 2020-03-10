@@ -27,5 +27,7 @@ urlpatterns = [
     path('ban_cliente/', views.banearUser, name = 'desactivar_cliete'),
     path('unban_cliente/', views.unbanUser, name = 'activar_cliete'),
     path('posts/', views.publicaciones, name = 'publicaciones'),
+    path('comen/', views.comentarios, name = 'comentarios'),
     path('delete_post/', views.deletearPost, name = 'borrar_publicacion'),
+    path('delete_comen/', views.deletearComen, name = 'borrar_comentario'),
 ]

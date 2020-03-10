@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from aps.modelo.models import User, Post
+from aps.modelo.models import User, Post, Comentario
 
 from .forms import formularioUser, formularioLogin
 
@@ -86,12 +86,48 @@ def publicaciones(request):
 	return redirect(logear)
 	
 
+def comentarios(request):
+
+	if request.user.is_authenticated:
+		
+		coments = Comentario.objects.all().order_by('created_at')
+
+		context = {
+
+		'lista': coments
+		
+		}
+
+		return render (request, 'comentirios.html', context)
+
+	return redirect(logear)
+
+
+def deletearComen(request):
+
+	usuario = request.user
+
+	if usuario.groups.filter(name = 'Admin').exists():
+
+		external = request.GET['external']
+
+		comen = Comentario.objects.get(coment_id = external)
+
+		comen.delete()
+
+		return redirect(comentarios)
+
+	else: 
+		messages.add_message(request, messages.ERROR, "No tienes autorizacion para hacer eso")
+		return redirect(comentarios)	
+
 @login_required
 def deslogear(request):
 
 	logout(request)
 
 	return redirect(logear)
+
 
 def deletearPost(request):
 

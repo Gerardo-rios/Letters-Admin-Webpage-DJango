@@ -52,7 +52,6 @@
 							<li><a href="/unlog">Logout</a></li>
 						</ul>						
 					</li>
-
 				</ul>
 				
 			</div><!--/.nav-collapse -->	
@@ -80,14 +79,14 @@
 					</a>	    				
 				</li>
 				
-				<li class="active">
+				<li>
 					<a href="/posts">
 						<i class="icon-list-alt"></i>
 						<span>Publicaciones</span>
 					</a>    				
 				</li>
 
-        <li>
+        <li class="active">
           <a href="/comen">
             <i class="icon-list-alt"></i>
             <span>Comentarios</span>
@@ -114,7 +113,7 @@
                
                <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
-              <h3>Publicaciones</h3>
+              <h3>Comentarios</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
@@ -133,7 +132,7 @@
                     <td> {{b.contenido}}</td>
                     <td> {{b.user.username}} </td>
                     <td> {{b.created_at}} </td> 
-                    <td class="td-actions"><a href="/delete_post?external={{b.post_id}}" class="btn btn-small btn-danger"> Eliminar </a>
+                    <td class="td-actions"><a href="/delete_comen?external={{b.coment_id}}" class="btn btn-small btn-danger"> Eliminar </a>
                   </tr>
                   {% endfor %}
                 </tbody>
