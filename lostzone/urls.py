@@ -30,4 +30,6 @@ urlpatterns = [
     path('comen/', views.comentarios, name = 'comentarios'),
     path('delete_post/', views.deletearPost, name = 'borrar_publicacion'),
     path('delete_comen/', views.deletearComen, name = 'borrar_comentario'),
+    path('ver_comentarios/', views.ver_comentarios, name = 'ver comentarios'),
+    #path('registrar_usuario/', views.registrar_usuario, name = 'registrar_usuario'),
 ]

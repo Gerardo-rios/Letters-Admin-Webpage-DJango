@@ -103,6 +103,25 @@ def comentarios(request):
 	return redirect(logear)
 
 
+def ver_comentarios(request):
+
+	if request.user.is_authenticated:
+		
+		external = request.GET['external']
+
+		coments = Comentario.objects.filter(post_id = external).order_by('created_at')
+
+		context = {
+
+		'lista': coments
+		
+		}
+
+		return render (request, 'comentirios.html', context)
+
+	return redirect(logear)
+
+
 def deletearComen(request):
 
 	usuario = request.user
@@ -189,38 +208,46 @@ def unbanUser(request):
 		messages.add_message(request, messages.ERROR, "No tienes autorizacion para hacer eso")
 		return redirect(principal)	
 
+"""
+def registrar_usuario(request):	
 
-#def registrarse(request):	
+	formulario = formularioUser(request.POST)
 
-#	formulario = formularioUser(request.POST)	
+	administrador = request.user
 
-#	if request.method == 'POST':
+	if administrador.groups.filter(name = 'Admin').exists():	
+
+		if request.method == 'POST':
 		
-#		if formulario.is_valid():
+			if formulario.is_valid():
 
-#			datos = formulario.cleaned_data
-#			usuario = User()
-#			usuario.nombre = datos.get('nombre')
-#			usuario.username = datos.get('username')
-			#usuario.descripcion = "descripcion"
-#			usuario.fecha_nacimiento = datos.get('fecha_nacimiento')
-#    		usuario.foto_perfil = "https://via.placeholder.com/150x150"
-			#usuario.celular = "000000000"
-#			usuario.correo = datos.get('correo')
-#			usuario.password = datos.get('password')
+				datos = formulario.cleaned_data
+				usuario = User()
+				usuario.nombre = datos.get('nombre')
+				usuario.username = datos.get('username')
+				usuario.descripcion = "descripcion"
+				usuario.foto_perfil = "/profile_pictures/default_user.png"
+				usuario.celular = datos.get('celular')
+				usuario.correo = datos.get('correo')
+				usuario.password = datos.get('password')
 
-#			usuario.save()
+				usuario.save()
 
-#			return redirect(principal)
-#		else:
-#			print("no es valido")
-#	else: 
-#		print("no es post")
-		
-#	context = {
-#		'formulario': formulario,
-#	}
+				return redirect(principal)
+			else:
+				print("no es valido")
+				messages.add_message(request, messages.ERROR, "No se ingresaron datos validos")
+		else: 
+			print("no es post")
+			messages.add_message(request, messages.ERROR, "No se esta enviando un post")
 	
-#	return render (request, 'REGISTROZONE.html', context)
+		context = {
+			'formulario': formulario,
+		}
 
+		return render (request, 'REGISTROZONE.html', context)
 
+	else: 
+		messages.add_message(request, messages.ERROR, "No tienes autorizacion para hacer eso")
+		return redirect(principal)
+"""

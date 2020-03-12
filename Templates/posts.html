@@ -40,7 +40,7 @@
 			
 			<div class="nav-collapse">
 				<ul class="nav pull-right">
-			
+			    
 					<li class="dropdown">						
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-user"></i> 
@@ -72,7 +72,7 @@
 		<div class="container">
 
 			<ul class="mainnav">
-			
+
 				<li>
 					<a href="/home">
 						<i class="icon-user"></i>
@@ -89,7 +89,7 @@
 
         <li>
           <a href="/comen">
-            <i class="icon-list-alt"></i>
+            <i class="shortcut-icon icon-comment"></i>
             <span>Comentarios</span>
           </a>            
         </li>
@@ -133,7 +133,9 @@
                     <td> {{b.contenido}}</td>
                     <td> {{b.user.username}} </td>
                     <td> {{b.created_at}} </td> 
-                    <td class="td-actions"><a href="/delete_post?external={{b.post_id}}" class="btn btn-small btn-danger"> Eliminar </a>
+                    <td class="td-actions">
+                      <a href="/ver_comentarios?external={{b.post_id}}" class="btn btn-small btn-success"> Comentarios </a>
+                      <a href="/delete_post?external={{b.post_id}}" class="btn btn-small btn-danger"> Eliminar </a> </td>
                   </tr>
                   {% endfor %}
                 </tbody>
@@ -180,7 +182,7 @@
                     <!-- /span3 -->
                     <div class="span3">
                         <h4>
-                            Algo Legal</h4>
+                            Aviso Legal</h4>
                         <ul>
                             <li><a href="javascript:;">Licencia</a></li>
                             <li><a href="javascript:;">Terminos de uso</a></li>

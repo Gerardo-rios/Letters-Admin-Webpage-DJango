@@ -8,14 +8,16 @@ class formularioUser(forms.ModelForm):
 		fields = [
 			"nombre",
 			"correo",
+			"celular",
 			"password", 
 			"username", 				
 		]
 		widgets= {
-        "nombre": forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Tu nombre', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Tu nombre"'}),
-        "username": forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Tu nombre de usuario', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Tu nombre de usuario"'}),
-        "correo": forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'correo electronico', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "correo electronico"'}),
-        "password": forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'clave', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "clave"'})
+        "nombre": forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Nombre del usuario', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Nombre del usuario"'}),
+        "username": forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Username para el usuario', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Username para el usuario"'}),
+        "celular": forms.TextInput(attrs = {'class': 'form-control', 'placeholder': 'Número de celular del usuario', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Número de celular del usuario"', 'input type': 'number'}),
+        "correo": forms.EmailInput(attrs = {'class': 'form-control', 'placeholder': 'Correo electronico del usuario', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Correo electronico del usuario"'}),
+        "password": forms.PasswordInput(attrs = {'class': 'form-control', 'placeholder': 'Contraseña para el usuario', 'required': True, 'onfocus': 'this.placeholder = ""', 'onblur': 'this.placeholder = "Contraseña para el usuario"'})
         }
 
 
